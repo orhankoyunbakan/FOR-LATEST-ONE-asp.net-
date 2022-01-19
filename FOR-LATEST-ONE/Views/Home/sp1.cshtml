@@ -1,0 +1,35 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using FOR_LATEST_ONE.Models
+@model List<sp_sayfa_buyuk_500_Result>
+
+<div class="container">
+    <div class="row">
+        <h2 align="center" style="color: white;">Sayfa Sayısı 500'den Büyük Kalın Kitaplar Listesi</h2>
+        <hr class="text-light">
+
+        @foreach (var item in Model)
+        {
+
+
+            <div class="card border-0 ">
+                <div class="cardimage">
+                    <img width="136" height="172" src="@item.foto_url" class="card-img-top" alt="...">
+                </div>
+                <h5 style="font-size:17px;" align="center" class="card-title text-light">@item.ad.ToUpper()</h5>
+
+                <div class="card-body">
+                    <div align="center">
+                        <a style="background-color:#34495e;width: 100%;" href="../UrunDetay/index?urun_id=@item.urun_id" class="btn text-light border-0">Detaya Git</a>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+
+    </div>
+</div>

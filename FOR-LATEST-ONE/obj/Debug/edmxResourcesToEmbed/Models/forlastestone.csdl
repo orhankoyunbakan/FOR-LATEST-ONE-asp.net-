@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ForLatestOneModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="dizi">
+    <Key>
+      <PropertyRef Name="dizi_id" />
+    </Key>
+    <Property Name="dizi_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategori_id" Type="Int32" />
+    <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="yapim_tarihi" Type="DateTime" Precision="3" />
+    <Property Name="yayin_kanal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="bolum_sayisi" Type="Int32" />
+    <Property Name="oyuncular" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="yonetmen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="dizi_url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="kategori" Relationship="Self.FK_dizi_kategori" FromRole="dizi" ToRole="kategori" />
+  </EntityType>
+  <EntityType Name="film">
+    <Key>
+      <PropertyRef Name="film_id" />
+    </Key>
+    <Property Name="film_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategori_id" Type="Int32" />
+    <Property Name="ad" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="yonetmen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="oyuncular" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="yapim_yili" Type="Int32" />
+    <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="film_url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="kategori" Relationship="Self.FK_film_kategori" FromRole="film" ToRole="kategori" />
+  </EntityType>
+  <EntityType Name="kategori">
+    <Key>
+      <PropertyRef Name="kategori_id" />
+    </Key>
+    <Property Name="kategori_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="menu_id" Type="Int32" />
+    <Property Name="kategori_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kategori_sira" Type="Int32" />
+    <NavigationProperty Name="dizi" Relationship="Self.FK_dizi_kategori" FromRole="kategori" ToRole="dizi" />
+    <NavigationProperty Name="film" Relationship="Self.FK_film_kategori" FromRole="kategori" ToRole="film" />
+    <NavigationProperty Name="menu" Relationship="Self.FK_kategori_menu" FromRole="kategori" ToRole="menu" />
+    <NavigationProperty Name="kitap" Relationship="Self.FK_kitap_kategori" FromRole="kategori" ToRole="kitap" />
+    <NavigationProperty Name="muzik" Relationship="Self.FK_muzik_kategori" FromRole="kategori" ToRole="muzik" />
+    <NavigationProperty Name="oyun" Relationship="Self.FK_oyun_kategori" FromRole="kategori" ToRole="oyun" />
+  </EntityType>
+  <EntityType Name="kitap">
+    <Key>
+      <PropertyRef Name="kitap_id" />
+    </Key>
+    <Property Name="kitap_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategori_id" Type="Int32" />
+    <Property Name="ad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="yazar" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="yayin_evi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="sayfa_sayisi" Type="Int32" />
+    <Property Name="ilk_baski_yili" Type="Int32" />
+    <Property Name="kitap_url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="kategori" Relationship="Self.FK_kitap_kategori" FromRole="kitap" ToRole="kategori" />
+  </EntityType>
+  <EntityType Name="menu">
+    <Key>
+      <PropertyRef Name="menu_id" />
+    </Key>
+    <Property Name="menu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="menu_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="menu_sira" Type="Int32" />
+    <NavigationProperty Name="kategori" Relationship="Self.FK_kategori_menu" FromRole="menu" ToRole="kategori" />
+  </EntityType>
+  <EntityType Name="muzik">
+    <Key>
+      <PropertyRef Name="muzik_id" />
+    </Key>
+    <Property Name="muzik_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategori_id" Type="Int32" />
+    <Property Name="ad" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="sozler" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="sanatcı" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="cikis_tarihi" Type="DateTime" Precision="3" />
+    <Property Name="tur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="muzik_url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="kategori" Relationship="Self.FK_muzik_kategori" FromRole="muzik" ToRole="kategori" />
+  </EntityType>
+  <EntityType Name="oyun">
+    <Key>
+      <PropertyRef Name="oyun_id" />
+    </Key>
+    <Property Name="oyun_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategori_id" Type="Int32" />
+    <Property Name="ad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="son_surum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sunan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="yukleme_sayisi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="boyut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="oyun_url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="kategori" Relationship="Self.FK_oyun_kategori" FromRole="oyun" ToRole="kategori" />
+  </EntityType>
+  <EntityType Name="slider">
+    <Key>
+      <PropertyRef Name="slider_id" />
+    </Key>
+    <Property Name="slider_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="slider_url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="slider_sira" Type="Int32" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="uye">
+    <Key>
+      <PropertyRef Name="uye_id" />
+    </Key>
+    <Property Name="uye_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uye_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uye_soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uye_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uye_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uye_yetki" Type="Int32" />
+    <NavigationProperty Name="yorum" Relationship="Self.FK_yorum_uye" FromRole="uye" ToRole="yorum" />
+  </EntityType>
+  <EntityType Name="yorum">
+    <Key>
+      <PropertyRef Name="yorum_id" />
+    </Key>
+    <Property Name="yorum_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uye_id" Type="Int32" />
+    <Property Name="yorum_detay" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="yorum_zaman" Type="DateTime" Precision="3" />
+    <Property Name="urun_id" Type="Int32" />
+    <NavigationProperty Name="uye" Relationship="Self.FK_yorum_uye" FromRole="yorum" ToRole="uye" />
+  </EntityType>
+  <Association Name="FK_dizi_kategori">
+    <End Role="kategori" Type="Self.kategori" Multiplicity="0..1" />
+    <End Role="dizi" Type="Self.dizi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kategori">
+        <PropertyRef Name="kategori_id" />
+      </Principal>
+      <Dependent Role="dizi">
+        <PropertyRef Name="kategori_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_film_kategori">
+    <End Role="kategori" Type="Self.kategori" Multiplicity="0..1" />
+    <End Role="film" Type="Self.film" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kategori">
+        <PropertyRef Name="kategori_id" />
+      </Principal>
+      <Dependent Role="film">
+        <PropertyRef Name="kategori_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kategori_menu">
+    <End Role="menu" Type="Self.menu" Multiplicity="0..1" />
+    <End Role="kategori" Type="Self.kategori" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="menu">
+        <PropertyRef Name="menu_id" />
+      </Principal>
+      <Dependent Role="kategori">
+        <PropertyRef Name="menu_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kitap_kategori">
+    <End Role="kategori" Type="Self.kategori" Multiplicity="0..1" />
+    <End Role="kitap" Type="Self.kitap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kategori">
+        <PropertyRef Name="kategori_id" />
+      </Principal>
+      <Dependent Role="kitap">
+        <PropertyRef Name="kategori_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_muzik_kategori">
+    <End Role="kategori" Type="Self.kategori" Multiplicity="0..1" />
+    <End Role="muzik" Type="Self.muzik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kategori">
+        <PropertyRef Name="kategori_id" />
+      </Principal>
+      <Dependent Role="muzik">
+        <PropertyRef Name="kategori_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_oyun_kategori">
+    <End Role="kategori" Type="Self.kategori" Multiplicity="0..1" />
+    <End Role="oyun" Type="Self.oyun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kategori">
+        <PropertyRef Name="kategori_id" />
+      </Principal>
+      <Dependent Role="oyun">
+        <PropertyRef Name="kategori_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_yorum_uye">
+    <End Role="uye" Type="Self.uye" Multiplicity="0..1" />
+    <End Role="yorum" Type="Self.yorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="uye">
+        <PropertyRef Name="uye_id" />
+      </Principal>
+      <Dependent Role="yorum">
+        <PropertyRef Name="uye_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ForLatestOneEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="dizi" EntityType="Self.dizi" />
+    <EntitySet Name="film" EntityType="Self.film" />
+    <EntitySet Name="kategori" EntityType="Self.kategori" />
+    <EntitySet Name="kitap" EntityType="Self.kitap" />
+    <EntitySet Name="menu" EntityType="Self.menu" />
+    <EntitySet Name="muzik" EntityType="Self.muzik" />
+    <EntitySet Name="oyun" EntityType="Self.oyun" />
+    <EntitySet Name="slider" EntityType="Self.slider" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="uye" EntityType="Self.uye" />
+    <EntitySet Name="yorum" EntityType="Self.yorum" />
+    <AssociationSet Name="FK_dizi_kategori" Association="Self.FK_dizi_kategori">
+      <End Role="kategori" EntitySet="kategori" />
+      <End Role="dizi" EntitySet="dizi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_film_kategori" Association="Self.FK_film_kategori">
+      <End Role="kategori" EntitySet="kategori" />
+      <End Role="film" EntitySet="film" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kategori_menu" Association="Self.FK_kategori_menu">
+      <End Role="menu" EntitySet="menu" />
+      <End Role="kategori" EntitySet="kategori" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kitap_kategori" Association="Self.FK_kitap_kategori">
+      <End Role="kategori" EntitySet="kategori" />
+      <End Role="kitap" EntitySet="kitap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_muzik_kategori" Association="Self.FK_muzik_kategori">
+      <End Role="kategori" EntitySet="kategori" />
+      <End Role="muzik" EntitySet="muzik" />
+    </AssociationSet>
+    <AssociationSet Name="FK_oyun_kategori" Association="Self.FK_oyun_kategori">
+      <End Role="kategori" EntitySet="kategori" />
+      <End Role="oyun" EntitySet="oyun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_yorum_uye" Association="Self.FK_yorum_uye">
+      <End Role="uye" EntitySet="uye" />
+      <End Role="yorum" EntitySet="yorum" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

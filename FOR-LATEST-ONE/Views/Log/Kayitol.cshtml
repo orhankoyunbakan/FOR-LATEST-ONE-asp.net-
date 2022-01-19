@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Kayitol";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model FOR_LATEST_ONE.Models.uye
+
+<div style="background-color: #e74c3c;padding: 20px;" class="container-fluid">
+    <div class="container">
+        <div class="row">
+            @ViewBag.Kayitok
+
+            <div class="col-md-4">
+
+            </div>
+
+            <div class="col-md-4">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <br />
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" class="form-label text-light">Adınızı Giriniz</label>
+
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.uye_ad, new { htmlAttributes = new { @class = "form-control", @Required = "" } })
+                                @Html.ValidationMessageFor(model => model.uye_ad, "", new { @class = "text-danger" })
+                            </div>
+                            <hr class="text-light">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" class="form-label text-light">Soyad Giriniz</label>
+
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.uye_soyad, new { htmlAttributes = new { @class = "form-control", @Required = "" } })
+                                @Html.ValidationMessageFor(model => model.uye_soyad, "", new { @class = "text-danger" })
+                            </div>
+                            <hr class="text-light">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="form-label text-light">Email Giriniz</label>
+
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.uye_mail, new { htmlAttributes = new { @class = "form-control", @type = "email", @Required = "" } })
+                                @Html.ValidationMessageFor(model => model.uye_mail, "", new { @class = "text-danger" })
+                            </div>
+                            <hr class="text-light">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" class="form-label text-light">Şifre Giriniz</label>
+
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.uye_password, new { htmlAttributes = new { @class = "form-control", @type = "password", @Required = ""  } })
+                                @Html.ValidationMessageFor(model => model.uye_password, "", new { @class = "text-danger" })
+                            </div>
+                            <hr class="text-light">
+
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input style="width: 100%;" type="submit" value="Kayıt Ol" class="btn btn-dark btn-lg" />
+                                <small style="color:white;"> @ViewBag.Kayitok</small>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="col-md-4"></div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+

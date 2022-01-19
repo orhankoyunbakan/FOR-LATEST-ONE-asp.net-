@@ -1,0 +1,99 @@
+﻿
+@{
+    Layout = null;
+}
+
+@using FOR_LATEST_ONE.Models
+@model List<slider>
+<h2 align="center" style="color: white;">En Yeniler</h2>
+<hr class="text-light">
+<!--////////////////////////////CARAUSEL HTML//////////////////////////////-->
+
+<div class="carauselbody">
+    <div class="carousel">
+        <div class="slider">
+            
+            @foreach (var item in Model)
+            {
+
+
+            <div class="cardcarausel">
+                <div class="cardcarausel-bg" style="background-image: url(@item.slider_url);">
+                </div>
+            </div>
+
+            }
+
+
+
+        </div>
+    </div>
+</div>
+<!--////////////////////////////CARAUSEL SCRİPT///////////////-->
+
+<script>
+    (function ($) {
+        $(function () {
+            var slider = $(".slider").flickity({
+                imagesLoaded: true,
+                percentPosition: false,
+                prevNextButtons: false,
+                initialIndex: 3,
+                pageDots: false,
+                groupCells: 1,
+                selectedAttraction: 0.2,
+                friction: 0.8,
+                draggable: false
+            });
+
+            //enable clicking on cardcarausels
+            slider.on("staticClick.flickity", function (
+                event,
+                pointer,
+                cellElement,
+                cellIndex
+            ) {
+                if (typeof cellIndex == "number") {
+                    slider.flickity("selectCell", cellIndex);
+                }
+            });
+
+            //resize the selected cardcarausel (the middle one on page load + all the other ones when clicked); also center the carousel on page load, because it tends to move a few pixels to the right if .resize() and .reposition() aren't applied
+            var flkty = slider.data("flickity");
+            flkty.selectedElement.classList.add("is-custom-selected");
+            flkty.resize();
+            flkty.reposition();
+            let time = 0;
+            function reposition() {
+                flkty.reposition();
+                if (time++ < 10) {
+                    requestAnimationFrame(reposition);
+                } else {
+                    $(".flickity-prev-next-button").css("pointer-events", "auto");
+                }
+            }
+            requestAnimationFrame(reposition);
+
+            flkty.on("settle", () => {
+                $(".cardcarausel").removeClass("is-custom-selected");
+                $(".flickity-prev-next-button").css("pointer-events", "none");
+                flkty.selectedElement.classList.add("is-custom-selected");
+
+                let time = 0;
+                function reposition() {
+                    flkty.reposition();
+                    if (time++ < 10) {
+                        requestAnimationFrame(reposition);
+                    } else {
+                        $(".flickity-prev-next-button").css("pointer-events", "auto");
+                    }
+                }
+                requestAnimationFrame(reposition);
+            });
+        });
+    })(jQuery);
+
+
+</script>
+<!--////////////////////////////CARAUSEL SCRİPT////////////////-->
+<!--////////////////////////////CARAUSEL HTML//////////////////////////////-->

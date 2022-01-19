@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = null;
+}
+@using FOR_LATEST_ONE.Models
+@model List<yorum>
+
+
+
+<div align="center">
+    <hr class="text-light">
+    <h3 class="text-light">YORUMLAR <br /><button  id="yorumgoster" class="btn btn-dark btn-sm">Yorumları Gör</button></h3>
+    <hr class="text-light">
+
+</div>
+
+<script>
+    $("#yorumgoster").click(function () {
+
+        $(".yorumlar").toggle(300);
+    });
+
+
+</script>
+
+
+<div style="display:none;" class="yorumlar">
+    <div style="width:100%;" class="card border-white text-light">
+        
+   
+
+    @foreach (var item in Model)
+    {
+        <div style="width:100%;" class="card border-white text-light">
+            <div class="card-header">
+                @item.yorum_adsoyad
+            </div>
+            <hr />
+            <div class="card-body">
+                <blockquote style="" class="blockquote">
+                    <p>@item.yorum_detay</p>
+                    <footer class="blockquote-footer">@item.yorum_zaman</footer>
+                </blockquote>
+            </div>
+        </div><br />
+
+
+    }
+ </div>
+ </div>
+
+
+
+
+
+

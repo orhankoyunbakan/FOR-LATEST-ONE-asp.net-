@@ -1,0 +1,82 @@
+﻿
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>For Latest One</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.1/flickity.pkgd.min.js"></script>
+    <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../Content/style.css">
+    <style>
+    </style>
+</head>
+<body>
+    <!--////////////////////////////MENU HTML//////////////////////////////-->
+
+       @Html.Action("menu","Shared")
+
+    <!--////////////////////////////MENU HTML/////////////////////////////////////-->
+
+    <div>
+        @RenderBody()
+    </div>
+
+
+
+    <!--////////////////////////////FOOTER HTML//////////////////////////////-->
+    <hr class="text-light">
+    <div class="container">
+        <div class="row">
+            <style>
+            </style>
+
+            <div align="center" class="col-md-4 text-light footer">
+                <h5>Menüler</h5>
+                <hr>
+                <a href=""><span>Film</span></a><br>
+                <a href=""><span>Dizi</span></a><br>
+                <a href=""><span>Kitap</span></a><br>
+                <a href=""><span>Oyun</span></a><br>
+                <a href=""><span>Müzik</span></a><br>
+                <hr>
+            </div>
+
+            <div align="center" class="col-md-4 text-light footer">
+                <h5>Sosyal Medya</h5>
+                <hr>
+                <a href=""><span><i class="fa fa-instagram"></i> İnstagram</a> </span><br>
+                <a href=""><span><i class="fa fa-facebook"> Facebook</i></a> </span><br>
+                <a href=""><span><i class="fa fa-youtube"> Youtube</i> </a></span><br>
+                <a href=""><span><i class="fa fa-twitter"> Twitter</i> </a></span><br>
+                <br>
+                <hr>
+            </div>
+
+            <div align="center" class="col-md-4 text-light footer">
+                <h5>Hakkında</h5>
+                <hr>
+                <a href=""><span>İletişim</span></a><br>
+                <a href=""><span>Hakkımızda</span></a><br>
+                <br>
+                <br>
+                <br>
+                <hr>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</body>
+</html>
+

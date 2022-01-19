@@ -1,0 +1,61 @@
+﻿@model FOR_LATEST_ONE.Models.urun
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<
+<div class="container">
+
+    <h2>Kitap Detay</h2>
+    <hr />
+
+
+    <div class="card" style="width: 100%;">
+        <div class="row">
+            <div class="col-md-4"><img width="350" height="400" src=" @Html.DisplayFor(model => model.foto_url)" class="card-img-top" alt="..."></div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-4">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">@Html.DisplayNameFor(model => model.ad)</li>
+                            <li class="list-group-item">@Html.DisplayNameFor(model => model.yazar)</li>
+                            <li class="list-group-item">@Html.DisplayNameFor(model => model.sayfa_sayisi)</li>
+                            <li class="list-group-item">@Html.DisplayNameFor(model => model.yapim_yili)</li>
+                            <li class="list-group-item">@Html.DisplayNameFor(model => model.aciklama)</li>
+                            <li class="list-group-item">@Html.DisplayNameFor(model => model.foto_url)</li>
+
+                            <li class="list-group-item">@Html.DisplayNameFor(model => model.kategori.kategori_ad)</li>
+
+
+                        </ul>
+                    </div>
+                    <div class="col-md-8">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">@Html.DisplayFor(model => model.ad)</li>
+                            <li class="list-group-item">@Html.DisplayFor(model => model.yazar)</li>
+                            <li class="list-group-item">@Html.DisplayFor(model => model.sayfa_sayisi)</li>
+                            <li class="list-group-item">@Html.DisplayFor(model => model.yapim_yili)</li>
+                            <li class="list-group-item">@Html.DisplayFor(model => model.aciklama)</li>
+                            <li class="list-group-item">@Html.DisplayFor(model => model.foto_url)</li>
+
+                            <li class="list-group-item">@Html.DisplayFor(model => model.kategori.kategori_ad)</li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+        <a href="~/Kitaps/EditKitap?id=@Html.DisplayFor(model => model.urun_id)" class="btn btn-success">Düzenle</a> <a href="indexKitap" class="btn btn-warning">Geri Git</a>
+
+
+
+    </div>
+
+
+</div>

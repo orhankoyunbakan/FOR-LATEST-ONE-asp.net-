@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using FOR_LATEST_ONE.Models
+@model List<favori>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+
+
+            <div class="card border-0 ">
+
+                <div class="cardimage">
+
+                    <img width="136" height="172" src="@item.urun.foto_url" class="card-img-top" alt="...">
+                </div>
+                <h5 style="font-size:17px;" align="center" class="card-title text-light">@item.urun.ad.ToUpper()</h5><p style="margin-top:-70px;margin-left:0px;padding:10px;"><a style="color:red;border:solid;border-color:red;" href="../Favoris/FavoriSilme?favori_id=@item.fovori_id"><i style="padding:5px;" class="fa fa-times"></i></a></p>
+
+                <div class="card-body">
+                    <div align="center">
+                        <a style="background-color:#34495e;width: 100%;" href="../UrunDetay/index?urun_id=@item.urun_id" class="btn text-light border-0">Detaya Git</a>
+
+                    </div>
+                </div>
+            </div>
+
+        }
+
+
+
+    </div>
+</div>
+
+
+

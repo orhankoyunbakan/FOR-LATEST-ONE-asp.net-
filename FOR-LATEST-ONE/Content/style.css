@@ -1,0 +1,313 @@
+﻿/*////////////////////////////MENU CSS//////////////////////////////*/
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    *zoom: 1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    overflow-x: hidden;
+}
+
+.menu,
+.submenu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+
+.menu {
+    margin: auto;
+    width: 800px;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+    width: fit-content;
+}
+
+    .menu .smmenu1, .smmenu2 {
+        display: none;
+    }
+
+    .menu > li {
+        width: 150px;
+        background: #34495e;
+        float: left;
+        position: relative;
+        transform: skewX(25deg);
+    }
+
+    .menu a {
+        display: block;
+        color: #fff;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-family: Arial, Helvetica;
+        font-size: 14px;
+    }
+
+    .menu .logo {
+        width: 300px;
+    }
+
+    .menu li:hover {
+        background: #e74c3c;
+    }
+
+    .menu > li > a {
+        transform: skewX(-25deg);
+        padding: 1em 2em;
+    }
+
+/* Dropdown */
+.cepmenu {
+    z-index: 1;
+}
+
+.submenu {
+    position: absolute;
+    width: 200px;
+    left: 50%;
+    margin-left: -100px;
+    transform: skewX(-25deg);
+    transform-origin: left top;
+}
+
+    .submenu li {
+        background-color: #34495e;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .submenu > li > a {
+        padding: 1em 2em;
+    }
+
+    .submenu > li::after {
+        content: '';
+        position: absolute;
+        top: -125%;
+        height: 100%;
+        width: 100%;
+        box-shadow: 0 0 50px rgba(0, 0, 0, .9);
+    }
+
+    /* Odd stuff */
+    .submenu > li:nth-child(odd) {
+        transform: skewX(-25deg) translateX(0);
+    }
+
+        .submenu > li:nth-child(odd) > a {
+            transform: skewX(25deg);
+        }
+
+        .submenu > li:nth-child(odd)::after {
+            right: -50%;
+            transform: skewX(-25deg) rotate(3deg);
+        }
+
+    /* Even stuff */
+    .submenu > li:nth-child(even) {
+        transform: skewX(25deg) translateX(0);
+    }
+
+        .submenu > li:nth-child(even) > a {
+            transform: skewX(-25deg);
+        }
+
+        .submenu > li:nth-child(even)::after {
+            left: -50%;
+            transform: skewX(25deg) rotate(3deg);
+        }
+
+    /* Show dropdown */
+    .submenu,
+    .submenu li {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+        .submenu li {
+            transition: .2s ease transform;
+        }
+
+.menu > li:hover .submenu,
+.menu > li:hover .submenu li {
+    opacity: 1;
+    visibility: visible;
+}
+
+    .menu > li:hover .submenu li:nth-child(even) {
+        transform: skewX(25deg) translateX(15px);
+    }
+
+    .menu > li:hover .submenu li:nth-child(odd) {
+        transform: skewX(-25deg) translateX(-15px);
+    }
+
+/*///////////////////////////////////////////////////////////*/
+
+@media (max-width:768px) {
+    .menu .cepmenu {
+        width: 68px;
+        margin-top: 30%;
+    }
+
+        .menu .cepmenu a, .submenu a {
+            font-size: 12px;
+        }
+
+    .menu .girisyap {
+        display: none;
+    }
+
+    .menu .kayıtol {
+        display: none;
+    }
+
+    .menu .logo {
+        width: 60%;
+        display: block;
+        position: absolute;
+        left: 4%;
+    }
+
+    .menu .smmenu1 {
+        width: 100px;
+        height: 40px;
+        display: block;
+        position: absolute;
+        right: 0;
+    }
+
+
+
+    .menu .smmenu2 {
+        width: 100px;
+        height: 40px;
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 8.7%;
+        z-index: 5;
+    }
+}
+/*////////////////////////////MENU CSS//////////////////////////////*/
+
+/*////////////////////////////CARAUSEL CSS//////////////////////////////*/
+/*
+NOTES:
+1. dragging is disabled (by me);
+2. clicking is enabled (by me);
+3. arrow keys (left and right) are enabled (by default);
+*/
+
+
+
+.carauselbody {
+    height: 500px;
+    background-color: #e74c3c;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.cardcarausel {
+    margin: 0 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 35, 0.25);
+    border-radius: 8px;
+    height: 200px;
+    width: 200px;
+    display: block;
+    position: relative;
+    background-position: 50%;
+    background-size: cover;
+    cursor: pointer;
+    transition: width 0.16s ease-in-out, height 0.16s ease-in-out;
+}
+
+    .cardcarausel.is-custom-selected {
+        width: 200px;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+.cardcarausel-bg {
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+.flickity-enabled {
+    position: relative;
+}
+
+    .flickity-enabled:focus {
+        outline: none;
+    }
+
+.flickity-viewport {
+    position: relative;
+    height: 100%;
+}
+
+.flickity-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/*////////////////////////////CARAUSEL CSS//////////////////////////////*/
+
+.card {
+    background-color: black;
+    width: 10rem;
+}
+
+.cardimage {
+    cursor: pointer;
+}
+
+    .cardimage :hover {
+        border-radius: 50px;
+    }
+
+.footer a {
+    text-decoration: none;
+    color: white;
+}
+
+

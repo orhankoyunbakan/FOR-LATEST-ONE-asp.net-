@@ -1,0 +1,188 @@
+﻿
+@{
+    Layout = null;
+}
+
+@using FOR_LATEST_ONE.Models
+@model List<kategori>
+
+
+<ul class="menu cf">
+
+    <li class="logo">
+        <a href="../Home/index"><p style="font-size:18.5px;"> For Latest One</p></a>
+    </li>
+    @if (Session["uye_ad"] == null)
+    {
+        <li class="smmenu1">
+            <a href="../Log/Giris">Giriş</a>
+        </li>
+        <li class="smmenu2">
+            <a href="../Log/Kayitol">Kaydol</a>
+            
+
+        </li>
+
+    }
+    else
+    {
+        <li class="smmenu1">
+            <a href="">@Session["uye_ad"].ToString().ToUpper()</a>
+        </li>
+        <li class="smmenu2">
+            <a href="~/Home/Hesabim">Hesabım</a>
+            <ul class="submenu">
+                <li><a href="~/Favoris/index">Favorilerim</a></li>
+                <li><a href="../Log/Cikis">Çıkış</a></li>
+            </ul>
+
+
+        </li>
+    }
+    <li class="cepmenu">
+        <a href="">FİLM</a>
+        <ul class="submenu">
+
+
+            @{ int i = 0;
+                foreach (var item in Model)
+                {
+
+
+
+                    if (i >= 0 && i < 5)
+                    {
+                        <li><a href="../Kategori/index?menu_id=1&kategori_id=@item.kategori_id">@item.kategori_ad</a></li>
+                    }
+                    i++;
+                }
+
+
+            }
+
+        </ul>
+    </li>
+
+
+    <li class="cepmenu">
+        <a href="">DİZİ</a>
+        <ul class="submenu">
+            @{ i = 0;
+                foreach (var item in Model)
+                {
+
+
+
+                    if (i >= 5 && i < 10)
+                    {
+                        <li><a href="../Kategori/index?menu_id=2&kategori_id=@item.kategori_id">@item.kategori_ad</a></li>
+                    }
+                    i++;
+                }
+
+
+            }
+        </ul>
+    </li>
+
+
+    <li class="cepmenu">
+        <a href="">KİTAP</a>
+        <ul class="submenu">
+
+            @{ i = 0;
+                foreach (var item in Model)
+                {
+
+
+
+                    if (i >= 10 && i < 15)
+                    {
+                        <li><a href="../Kategori/index?menu_id=3&kategori_id=@item.kategori_id">@item.kategori_ad</a></li>
+                    }
+                    i++;
+                }
+
+
+            }
+        </ul>
+    </li>
+
+
+
+
+
+    <li class="cepmenu">
+        <a href="">OYUN</a>
+        <ul class="submenu">
+
+            @{ i = 0;
+                foreach (var item in Model)
+                {
+
+
+
+                    if (i >= 15 && i < 20)
+                    {
+                        <li><a href="../Kategori/index?menu_id=4&kategori_id=@item.kategori_id">@item.kategori_ad</a></li>
+                    }
+                    i++;
+                }
+
+
+            }
+        </ul>
+    </li>
+
+
+    <li class="cepmenu">
+        <a href="">MÜZİK</a>
+        <ul class="submenu">
+
+            @{ i = 0;
+                foreach (var item in Model)
+                {
+
+
+
+                    if (i >= 20 && i < 25)
+                    {
+                        <li><a href="../Kategori/index?menu_id=5&kategori_id=@item.kategori_id">@item.kategori_ad</a></li>
+                    }
+                    i++;
+                }
+
+
+            }
+        </ul>
+    </li>
+
+    @if (Session["uye_ad"] == null)
+    {
+        <li style="margin-left:100px;" class="girisyap">
+            <a href="../Log/Giris">Giriş Yap</a>
+        </li>
+
+        <li class="kayıtol">
+            <a href="../Log/Kayitol">Kayıt Ol</a>
+        </li>
+    }
+    else
+    {
+        <li style="margin-left:100px;" class="girisyap">
+            <a style="color:white;">@Session["uye_ad"].ToString().ToUpper()</a>
+        </li>
+
+        <li class="kayıtol">
+            <a href="~/Home/Hesabim">Hesabım</a>
+            <ul class="submenu">
+                <li><a href="~/Favoris/index">Favorilerim</a></li>
+                <li><a href="../Log/Cikis">Çıkış Yap</a></li>
+            </ul>
+        </li>
+    }
+
+
+</ul>
+
+<hr class="text-light">

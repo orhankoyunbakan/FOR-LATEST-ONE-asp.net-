@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ForLatestOne1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="favori">
+    <Key>
+      <PropertyRef Name="fovori_id" />
+    </Key>
+    <Property Name="fovori_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="urun_id" Type="Int32" />
+    <Property Name="uye_id" Type="Int32" />
+    <NavigationProperty Name="urun" Relationship="Self.FK_favori_urun" FromRole="favori" ToRole="urun" />
+    <NavigationProperty Name="uye" Relationship="Self.FK_favori_uye" FromRole="favori" ToRole="uye" />
+  </EntityType>
+  <EntityType Name="kategori">
+    <Key>
+      <PropertyRef Name="kategori_id" />
+    </Key>
+    <Property Name="kategori_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategori_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kategori_sira" Type="Int32" />
+    <Property Name="menu_id" Type="Int32" />
+    <NavigationProperty Name="menu" Relationship="Self.FK_kategori_menu" FromRole="kategori" ToRole="menu" />
+    <NavigationProperty Name="uruns" Relationship="Self.FK_urun_kategori" FromRole="kategori" ToRole="urun" />
+  </EntityType>
+  <EntityType Name="menu">
+    <Key>
+      <PropertyRef Name="menu_id" />
+    </Key>
+    <Property Name="menu_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="menu_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="menu_sira" Type="Int32" />
+    <NavigationProperty Name="kategoris" Relationship="Self.FK_kategori_menu" FromRole="menu" ToRole="kategori" />
+    <NavigationProperty Name="uruns" Relationship="Self.FK_urun_menu" FromRole="menu" ToRole="urun" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="urun">
+    <Key>
+      <PropertyRef Name="urun_id" />
+    </Key>
+    <Property Name="urun_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="menu_id" Type="Int32" />
+    <Property Name="kategori_id" Type="Int32" />
+    <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="yonetmen" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="yapim_yili" Type="Int32" />
+    <Property Name="oyuncular" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="foto_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="yayin_kanal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="bolum_sayisi" Type="Int32" />
+    <Property Name="son_surum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="yukleme_sayisi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="boyut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="yayin_evi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sayfa_sayisi" Type="Int32" />
+    <Property Name="sozler" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="sanatci" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="tur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="favoris" Relationship="Self.FK_favori_urun" FromRole="urun" ToRole="favori" />
+    <NavigationProperty Name="kategori" Relationship="Self.FK_urun_kategori" FromRole="urun" ToRole="kategori" />
+    <NavigationProperty Name="menu" Relationship="Self.FK_urun_menu" FromRole="urun" ToRole="menu" />
+    <NavigationProperty Name="yorums" Relationship="Self.FK_yorum_urun" FromRole="urun" ToRole="yorum" />
+    <Property Name="yazar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="uye">
+    <Key>
+      <PropertyRef Name="uye_id" />
+    </Key>
+    <Property Name="uye_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uye_ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uye_soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uye_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="uye_yetki" Type="Int32" />
+    <NavigationProperty Name="favoris" Relationship="Self.FK_favori_uye" FromRole="uye" ToRole="favori" />
+    <NavigationProperty Name="yorums" Relationship="Self.FK_yorum_uye" FromRole="uye" ToRole="yorum" />
+    <Property Name="uye_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="yorum">
+    <Key>
+      <PropertyRef Name="yorum_id" />
+    </Key>
+    <Property Name="yorum_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uye_id" Type="Int32" />
+    <Property Name="urun_id" Type="Int32" />
+    <Property Name="yorum_detay" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="urun" Relationship="Self.FK_yorum_urun" FromRole="yorum" ToRole="urun" />
+    <NavigationProperty Name="uye" Relationship="Self.FK_yorum_uye" FromRole="yorum" ToRole="uye" />
+    <Property Name="yorum_zaman" Type="DateTime" Precision="3" />
+    <Property Name="yorum_adsoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_favori_urun">
+    <End Role="urun" Type="Self.urun" Multiplicity="0..1" />
+    <End Role="favori" Type="Self.favori" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="urun">
+        <PropertyRef Name="urun_id" />
+      </Principal>
+      <Dependent Role="favori">
+        <PropertyRef Name="urun_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_favori_uye">
+    <End Role="uye" Type="Self.uye" Multiplicity="0..1" />
+    <End Role="favori" Type="Self.favori" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="uye">
+        <PropertyRef Name="uye_id" />
+      </Principal>
+      <Dependent Role="favori">
+        <PropertyRef Name="uye_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kategori_menu">
+    <End Role="menu" Type="Self.menu" Multiplicity="0..1" />
+    <End Role="kategori" Type="Self.kategori" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="menu">
+        <PropertyRef Name="menu_id" />
+      </Principal>
+      <Dependent Role="kategori">
+        <PropertyRef Name="menu_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_urun_kategori">
+    <End Role="kategori" Type="Self.kategori" Multiplicity="0..1" />
+    <End Role="urun" Type="Self.urun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kategori">
+        <PropertyRef Name="kategori_id" />
+      </Principal>
+      <Dependent Role="urun">
+        <PropertyRef Name="kategori_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_urun_menu">
+    <End Role="menu" Type="Self.menu" Multiplicity="0..1" />
+    <End Role="urun" Type="Self.urun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="menu">
+        <PropertyRef Name="menu_id" />
+      </Principal>
+      <Dependent Role="urun">
+        <PropertyRef Name="menu_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_yorum_urun">
+    <End Role="urun" Type="Self.urun" Multiplicity="0..1" />
+    <End Role="yorum" Type="Self.yorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="urun">
+        <PropertyRef Name="urun_id" />
+      </Principal>
+      <Dependent Role="yorum">
+        <PropertyRef Name="urun_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_yorum_uye">
+    <End Role="uye" Type="Self.uye" Multiplicity="0..1" />
+    <End Role="yorum" Type="Self.yorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="uye">
+        <PropertyRef Name="uye_id" />
+      </Principal>
+      <Dependent Role="yorum">
+        <PropertyRef Name="uye_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ForLatestOne1Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="favoris" EntityType="Self.favori" />
+    <EntitySet Name="kategoris" EntityType="Self.kategori" />
+    <EntitySet Name="menus" EntityType="Self.menu" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="uruns" EntityType="Self.urun" />
+    <EntitySet Name="uyes" EntityType="Self.uye" />
+    <EntitySet Name="yorums" EntityType="Self.yorum" />
+    <AssociationSet Name="FK_favori_urun" Association="Self.FK_favori_urun">
+      <End Role="urun" EntitySet="uruns" />
+      <End Role="favori" EntitySet="favoris" />
+    </AssociationSet>
+    <AssociationSet Name="FK_favori_uye" Association="Self.FK_favori_uye">
+      <End Role="uye" EntitySet="uyes" />
+      <End Role="favori" EntitySet="favoris" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kategori_menu" Association="Self.FK_kategori_menu">
+      <End Role="menu" EntitySet="menus" />
+      <End Role="kategori" EntitySet="kategoris" />
+    </AssociationSet>
+    <AssociationSet Name="FK_urun_kategori" Association="Self.FK_urun_kategori">
+      <End Role="kategori" EntitySet="kategoris" />
+      <End Role="urun" EntitySet="uruns" />
+    </AssociationSet>
+    <AssociationSet Name="FK_urun_menu" Association="Self.FK_urun_menu">
+      <End Role="menu" EntitySet="menus" />
+      <End Role="urun" EntitySet="uruns" />
+    </AssociationSet>
+    <AssociationSet Name="FK_yorum_urun" Association="Self.FK_yorum_urun">
+      <End Role="urun" EntitySet="uruns" />
+      <End Role="yorum" EntitySet="yorums" />
+    </AssociationSet>
+    <AssociationSet Name="FK_yorum_uye" Association="Self.FK_yorum_uye">
+      <End Role="uye" EntitySet="uyes" />
+      <End Role="yorum" EntitySet="yorums" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ForLatestOne1Model.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ForLatestOne1Model.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_sayfa_buyuk_500" ReturnType="Collection(ForLatestOne1Model.sp_sayfa_buyuk_500_Result)" />
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="sliders" EntityType="ForLatestOne1Model.slider" />
+    <FunctionImport Name="sp_buyil_cikan_hersey" EntitySet="uruns" ReturnType="Collection(ForLatestOne1Model.urun)" />
+    <FunctionImport Name="sp_buyil_cikan_hersey1" ReturnType="Collection(ForLatestOne1Model.sp_buyil_cikan_hersey_Result)" />
+  </EntityContainer>
+  <ComplexType Name="sp_bugun_cikan_hersey_Result">
+    <Property Type="Int32" Name="urun_id" Nullable="false" />
+    <Property Type="String" Name="ad" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="menu_id" Nullable="true" />
+    <Property Type="Int32" Name="kategori_id" Nullable="true" />
+    <Property Type="String" Name="aciklama" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="yonetmen" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="yapim_yili" Nullable="true" />
+    <Property Type="String" Name="oyuncular" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="foto_url" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="yayin_kanal" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="bolum_sayisi" Nullable="true" />
+    <Property Type="String" Name="son_surum" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="yukleme_sayisi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="boyut" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="yayin_evi" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="sayfa_sayisi" Nullable="true" />
+    <Property Type="String" Name="sozler" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="sanatci" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="tur" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_sayfa_buyuk_500_Result">
+    <Property Type="Int32" Name="urun_id" Nullable="false" />
+    <Property Type="String" Name="ad" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="menu_id" Nullable="true" />
+    <Property Type="Int32" Name="kategori_id" Nullable="true" />
+    <Property Type="String" Name="aciklama" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="yonetmen" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="yapim_yili" Nullable="true" />
+    <Property Type="String" Name="oyuncular" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="foto_url" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="yayin_kanal" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="bolum_sayisi" Nullable="true" />
+    <Property Type="String" Name="son_surum" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="yukleme_sayisi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="boyut" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="yayin_evi" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="sayfa_sayisi" Nullable="true" />
+    <Property Type="String" Name="sozler" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="sanatci" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="tur" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="slider">
+    <Key>
+      <PropertyRef Name="slider_id" />
+    </Key>
+    <Property Name="slider_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="slider_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="slider_sira" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="sp_buyil_cikan_hersey_Result">
+    <Property Type="Int32" Name="urun_id" Nullable="false" />
+    <Property Type="String" Name="ad" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="menu_id" Nullable="true" />
+    <Property Type="Int32" Name="kategori_id" Nullable="true" />
+    <Property Type="String" Name="foto_url" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="aciklama" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="yonetmen" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="oyuncular" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="yapim_yili" Nullable="true" />
+    <Property Type="String" Name="yayin_kanal" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="bolum_sayisi" Nullable="true" />
+    <Property Type="String" Name="yazar" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="son_surum" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="yukleme_sayisi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="boyut" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="yayin_evi" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="sayfa_sayisi" Nullable="true" />
+    <Property Type="String" Name="sozler" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="sanatci" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="tur" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_buyil_cikan_hersey2_Result">
+    <Property Type="Int32" Name="urun_id" Nullable="false" />
+    <Property Type="String" Name="ad" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="menu_id" Nullable="true" />
+    <Property Type="Int32" Name="kategori_id" Nullable="true" />
+    <Property Type="String" Name="foto_url" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="aciklama" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="yonetmen" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="oyuncular" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="yapim_yili" Nullable="true" />
+    <Property Type="String" Name="yayin_kanal" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="bolum_sayisi" Nullable="true" />
+    <Property Type="String" Name="yazar" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="son_surum" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="yukleme_sayisi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="boyut" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="yayin_evi" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="sayfa_sayisi" Nullable="true" />
+    <Property Type="String" Name="sozler" Nullable="true" MaxLength="Max" />
+    <Property Type="String" Name="sanatci" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="tur" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

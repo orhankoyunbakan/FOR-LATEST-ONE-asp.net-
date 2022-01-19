@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ForLatestOne1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="favori">
+    <Key>
+      <PropertyRef Name="fovori_id" />
+    </Key>
+    <Property Name="fovori_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="urun_id" Type="int" />
+    <Property Name="uye_id" Type="int" />
+  </EntityType>
+  <EntityType Name="kategori">
+    <Key>
+      <PropertyRef Name="kategori_id" />
+    </Key>
+    <Property Name="kategori_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kategori_ad" Type="nvarchar" MaxLength="50" />
+    <Property Name="kategori_sira" Type="int" />
+    <Property Name="menu_id" Type="int" />
+  </EntityType>
+  <EntityType Name="menu">
+    <Key>
+      <PropertyRef Name="menu_id" />
+    </Key>
+    <Property Name="menu_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="menu_ad" Type="nvarchar" MaxLength="50" />
+    <Property Name="menu_sira" Type="int" />
+  </EntityType>
+  <EntityType Name="slider">
+    <Key>
+      <PropertyRef Name="slider_id" />
+    </Key>
+    <Property Name="slider_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="slider_url" Type="text" />
+    <Property Name="slider_sira" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="urun">
+    <Key>
+      <PropertyRef Name="urun_id" />
+    </Key>
+    <Property Name="urun_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ad" Type="nvarchar" MaxLength="100" />
+    <Property Name="menu_id" Type="int" />
+    <Property Name="kategori_id" Type="int" />
+    <Property Name="foto_url" Type="text" />
+    <Property Name="aciklama" Type="text" />
+    <Property Name="yonetmen" Type="nvarchar" MaxLength="500" />
+    <Property Name="oyuncular" Type="nvarchar" MaxLength="500" />
+    <Property Name="yapim_yili" Type="int" />
+    <Property Name="yayin_kanal" Type="nvarchar" MaxLength="50" />
+    <Property Name="bolum_sayisi" Type="int" />
+    <Property Name="yazar" Type="nvarchar" MaxLength="50" />
+    <Property Name="son_surum" Type="nvarchar" MaxLength="50" />
+    <Property Name="yukleme_sayisi" Type="nvarchar" MaxLength="50" />
+    <Property Name="boyut" Type="nvarchar" MaxLength="50" />
+    <Property Name="yayin_evi" Type="nvarchar" MaxLength="50" />
+    <Property Name="sayfa_sayisi" Type="int" />
+    <Property Name="sozler" Type="text" />
+    <Property Name="sanatci" Type="nvarchar" MaxLength="200" />
+    <Property Name="tur" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="uye">
+    <Key>
+      <PropertyRef Name="uye_id" />
+    </Key>
+    <Property Name="uye_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="uye_ad" Type="nvarchar" MaxLength="50" />
+    <Property Name="uye_soyad" Type="nvarchar" MaxLength="50" />
+    <Property Name="uye_mail" Type="nvarchar" MaxLength="50" />
+    <Property Name="uye_yetki" Type="int" />
+    <Property Name="uye_password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="yorum">
+    <Key>
+      <PropertyRef Name="yorum_id" />
+    </Key>
+    <Property Name="yorum_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="uye_id" Type="int" />
+    <Property Name="urun_id" Type="int" />
+    <Property Name="yorum_detay" Type="text" />
+    <Property Name="yorum_zaman" Type="datetime" />
+    <Property Name="yorum_adsoyad" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_favori_urun">
+    <End Role="urun" Type="Self.urun" Multiplicity="0..1" />
+    <End Role="favori" Type="Self.favori" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="urun">
+        <PropertyRef Name="urun_id" />
+      </Principal>
+      <Dependent Role="favori">
+        <PropertyRef Name="urun_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_favori_uye">
+    <End Role="uye" Type="Self.uye" Multiplicity="0..1" />
+    <End Role="favori" Type="Self.favori" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="uye">
+        <PropertyRef Name="uye_id" />
+      </Principal>
+      <Dependent Role="favori">
+        <PropertyRef Name="uye_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_kategori_menu">
+    <End Role="menu" Type="Self.menu" Multiplicity="0..1" />
+    <End Role="kategori" Type="Self.kategori" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="menu">
+        <PropertyRef Name="menu_id" />
+      </Principal>
+      <Dependent Role="kategori">
+        <PropertyRef Name="menu_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_urun_kategori">
+    <End Role="kategori" Type="Self.kategori" Multiplicity="0..1" />
+    <End Role="urun" Type="Self.urun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kategori">
+        <PropertyRef Name="kategori_id" />
+      </Principal>
+      <Dependent Role="urun">
+        <PropertyRef Name="kategori_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_urun_menu">
+    <End Role="menu" Type="Self.menu" Multiplicity="0..1" />
+    <End Role="urun" Type="Self.urun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="menu">
+        <PropertyRef Name="menu_id" />
+      </Principal>
+      <Dependent Role="urun">
+        <PropertyRef Name="menu_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_yorum_urun">
+    <End Role="urun" Type="Self.urun" Multiplicity="0..1" />
+    <End Role="yorum" Type="Self.yorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="urun">
+        <PropertyRef Name="urun_id" />
+      </Principal>
+      <Dependent Role="yorum">
+        <PropertyRef Name="urun_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_yorum_uye">
+    <End Role="uye" Type="Self.uye" Multiplicity="0..1" />
+    <End Role="yorum" Type="Self.yorum" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="uye">
+        <PropertyRef Name="uye_id" />
+      </Principal>
+      <Dependent Role="yorum">
+        <PropertyRef Name="uye_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_buyil_cikan_hersey" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_sayfa_buyuk_500" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="ForLatestOne1ModelStoreContainer">
+    <EntitySet Name="favori" EntityType="Self.favori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kategori" EntityType="Self.kategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="menu" EntityType="Self.menu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="slider" EntityType="Self.slider" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="urun" EntityType="Self.urun" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="uye" EntityType="Self.uye" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="yorum" EntityType="Self.yorum" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_favori_urun" Association="Self.FK_favori_urun">
+      <End Role="urun" EntitySet="urun" />
+      <End Role="favori" EntitySet="favori" />
+    </AssociationSet>
+    <AssociationSet Name="FK_favori_uye" Association="Self.FK_favori_uye">
+      <End Role="uye" EntitySet="uye" />
+      <End Role="favori" EntitySet="favori" />
+    </AssociationSet>
+    <AssociationSet Name="FK_kategori_menu" Association="Self.FK_kategori_menu">
+      <End Role="menu" EntitySet="menu" />
+      <End Role="kategori" EntitySet="kategori" />
+    </AssociationSet>
+    <AssociationSet Name="FK_urun_kategori" Association="Self.FK_urun_kategori">
+      <End Role="kategori" EntitySet="kategori" />
+      <End Role="urun" EntitySet="urun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_urun_menu" Association="Self.FK_urun_menu">
+      <End Role="menu" EntitySet="menu" />
+      <End Role="urun" EntitySet="urun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_yorum_urun" Association="Self.FK_yorum_urun">
+      <End Role="urun" EntitySet="urun" />
+      <End Role="yorum" EntitySet="yorum" />
+    </AssociationSet>
+    <AssociationSet Name="FK_yorum_uye" Association="Self.FK_yorum_uye">
+      <End Role="uye" EntitySet="uye" />
+      <End Role="yorum" EntitySet="yorum" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

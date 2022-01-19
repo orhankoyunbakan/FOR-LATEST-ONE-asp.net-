@@ -1,0 +1,58 @@
+﻿@model IEnumerable<FOR_LATEST_ONE.Models.uye>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.uye_ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.uye_soyad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.uye_mail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.uye_password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.uye_yetki)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.uye_ad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uye_soyad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uye_mail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uye_password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.uye_yetki)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.uye_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.uye_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.uye_id })
+        </td>
+    </tr>
+}
+
+</table>

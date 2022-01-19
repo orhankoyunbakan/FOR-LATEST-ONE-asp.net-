@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d8569eb76515427aaf5a789252a0456a" Name="Diagram1">
+        <EntityTypeShape EntityType="ForLatestOneModel.dizi" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForLatestOneModel.film" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForLatestOneModel.kategori" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForLatestOneModel.kitap" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForLatestOneModel.menu" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForLatestOneModel.muzik" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForLatestOneModel.oyun" Width="1.5" PointX="5.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForLatestOneModel.slider" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForLatestOneModel.sysdiagram" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForLatestOneModel.uye" Width="1.5" PointX="7.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ForLatestOneModel.yorum" Width="1.5" PointX="10" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="ForLatestOneModel.FK_dizi_kategori" ManuallyRouted="false" />
+        <AssociationConnector Association="ForLatestOneModel.FK_film_kategori" ManuallyRouted="false" />
+        <AssociationConnector Association="ForLatestOneModel.FK_kategori_menu" ManuallyRouted="false" />
+        <AssociationConnector Association="ForLatestOneModel.FK_kitap_kategori" ManuallyRouted="false" />
+        <AssociationConnector Association="ForLatestOneModel.FK_muzik_kategori" ManuallyRouted="false" />
+        <AssociationConnector Association="ForLatestOneModel.FK_oyun_kategori" ManuallyRouted="false" />
+        <AssociationConnector Association="ForLatestOneModel.FK_yorum_uye" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

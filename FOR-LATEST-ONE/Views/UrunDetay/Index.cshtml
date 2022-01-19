@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using FOR_LATEST_ONE.Models
+@model List<urun>
+
+<div class="container">
+    @foreach (var item in Model)
+    {
+    <div class="row">
+
+        <div class="col-md-4">
+            <div>
+                <img width="400" height="500" src="@item.foto_url" alt="Alternate Text" />
+            </div>
+
+        </div>
+
+        <div style="padding: 50px;" class="col-md-8 text-light">
+            <h1>@item.ad</h1>
+            <hr>
+            <h4>Açıklaması</h4>
+            <hr>
+            <p>
+                @item.aciklama
+            </p>
+
+
+            <h4>Bilgiler</h4>
+            <hr>
+            <p><strong>Yapım Yılı: </strong> @item.yapim_yili</p>
+
+            @if (item.yonetmen != null)
+            {
+                <p><strong>Yönetmen: </strong> @item.yonetmen</p>
+            }
+
+            @if (item.yazar != null)
+            {
+                <p><strong>Yönetmen: </strong> @item.yazar</p>
+            }
+            @if (item.yayin_kanal != null)
+            {
+                <p><strong>Yayınlandığı Kanal: </strong> @item.yayin_kanal</p>
+            }
+            @if (item.oyuncular != null)
+            {
+                <p><strong>Oyuncular: </strong> @item.oyuncular</p>
+            }
+
+            @if (item.bolum_sayisi != null)
+            {
+                <p><strong>Bolüm Sayısı: </strong> @item.bolum_sayisi</p>
+            }
+
+            @if (item.son_surum != null)
+            {
+                <p><strong>Son Sürümü: </strong> @item.son_surum</p>
+            }
+
+            @if (item.yukleme_sayisi != null)
+            {
+                <p><strong>Yükleme Sayısı: </strong> @item.yukleme_sayisi</p>
+            }
+
+            @if (item.boyut != null)
+            {
+                <p><strong>Boyut: </strong> @item.boyut</p>
+            }
+
+            @if (item.yayin_evi != null)
+            {
+                <p><strong>Yayın Evi: </strong> @item.yayin_evi</p>
+            }
+
+            @if (item.sayfa_sayisi != null)
+            {
+                <p><strong>Sayfa Sayısı: </strong> @item.sayfa_sayisi</p>
+            }
+
+            @if (item.sozler != null)
+            {
+                <p><strong>Sözler: </strong> @item.sozler</p>
+            }
+            @if (item.sanatci != null)
+            {
+                <p><strong>Sanatçı: </strong> @item.sanatci</p>
+            }
+            @if (item.tur != null)
+            {
+                <p><strong>Tür: </strong> @item.tur</p>
+            }
+            @Html.Action("YorumEkle", "UrunDetay")
+            @Html.Action("Yorum", "UrunDetay")
+
+
+        </div>
+
+      
+    </div>
+
+    }
+
+
+</div>
+
+
+@Html.Action("EnYeniler", "UrunDetay")
+
+
+

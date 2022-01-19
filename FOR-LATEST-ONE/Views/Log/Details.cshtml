@@ -1,0 +1,59 @@
+﻿@model FOR_LATEST_ONE.Models.uye
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>uye</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.uye_ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uye_ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uye_soyad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uye_soyad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uye_mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uye_mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uye_password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uye_password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uye_yetki)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uye_yetki)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.uye_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

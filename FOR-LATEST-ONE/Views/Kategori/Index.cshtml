@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using FOR_LATEST_ONE.Models
+@model List<urun>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+
+
+        <div class="card border-0 ">
+
+            <div class="cardimage">
+
+                <img width="136" height="172" src="@item.foto_url" class="card-img-top" alt="...">@if (Session["uye_ad"] != null){<p style="margin-top:-35px;padding:10px;"><a style="color:white" href="../Favoris/FavoriEkleme?urun_id=@item.urun_id"><i class="fa fa-heart  "></i></a></p>}
+            </div>
+            <h5 style="font-size:17px;" align="center" class="card-title text-light">@item.ad</h5>
+
+            <div class="card-body">
+                <div align="center">
+                    <a style="background-color:#34495e;width: 100%;" href="../UrunDetay/index?urun_id=@item.urun_id" class="btn text-light border-0">Detaya Git</a>
+
+                </div>
+            </div>
+        </div>
+
+        }
+
+
+
+    </div>
+</div>
+
+

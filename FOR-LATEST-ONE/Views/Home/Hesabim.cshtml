@@ -1,0 +1,49 @@
+﻿
+@{
+                /**/
+
+                ViewBag.Title = "Hesabim";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="background-color: #e74c3c;padding: 30px;" class="container-fluid">
+
+    <div class="container">
+
+
+
+        <div class="row">
+
+
+            <div class="col-md-4"> </div>
+
+
+
+            <div style="padding:30px;" class="col-md-4 bg-danger">
+                <h2>Hesabım</h2>
+                <hr class="text-light" />
+
+
+                <h5>AD SOYAD</h5>
+                <hr class="text-light" />
+                <p>@Session["uye_adsoyad"]</p>
+
+
+
+                <h5>MAİL</h5>
+                <hr class="text-light" />
+                <p>@Session["uye_mail"]</p>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+   </div>
+    
+
+    <br><br><br><br><br>
+
+

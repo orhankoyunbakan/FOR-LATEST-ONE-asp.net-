@@ -1,0 +1,95 @@
+﻿@model IEnumerable<FOR_LATEST_ONE.Models.urun>
+
+@{
+    ViewBag.Title = "IndexFilm";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-10">
+        <h2 style="color:red;">Filmler Tablosu</h2>
+        <hr />
+        <!-- Advanced Tables -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Filmler Tablosu <a style="margin-left:30px;" class="btn btn-success" href="~/Films/CreateFilm">Film Ekle</a>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ad)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.yonetmen)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.oyuncular)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.yapim_yili)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.aciklama)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.foto_url)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.yayin_kanal)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.kategori.kategori_ad)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                            <tr class="gradeU">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ad)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.yonetmen)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.oyuncular)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.yapim_yili)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.aciklama)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.foto_url)
+                                </td>
+                                <th>
+                                    @Html.DisplayFor(modelItem => item.yayin_kanal)
+                                </th>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.kategori.kategori_ad)
+                                </td>
+                                <td style="width:100px">
+                                    <a class="btn btn-success" href="~/Films/EditFilm?id=@item.urun_id ">Düzenle</a>
+                                    <a class="btn btn-success" href="~/Films/DetailsFilm?id=@item.urun_id ">Detay</a>
+                                    <a class="btn btn-success" href="~/Films/Deletefilm?id=@item.urun_id ">Sil</a>
+
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        <!--End Advanced Tables -->
+    </div>
+</div>

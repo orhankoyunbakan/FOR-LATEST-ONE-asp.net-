@@ -1,0 +1,39 @@
+﻿
+@{
+    /**/
+
+    Layout = null;
+}
+@if (Session["uye_ad"] != null)
+{
+<form method="post">
+    <div class="form-group">
+        <textarea style="width: 100%;" name="yorum_detay" placeholder="yorum yapınız.."></textarea>
+
+    </div>
+    <input type="hidden" name="urun_id" class="form-control" value="@Session["urun_id"]" />
+    <input type="hidden" name="uye_id" class="form-control" value="@Session["uye_id"]" />
+    <input type="hidden" name="yorum_adsoyad" class="form-control" value="@Session["uye_adsoyad"]" />
+    <input type="hidden" name="yorum_zaman" class="form-control" value="@DateTime.Now.ToString()" />
+
+
+   
+
+    <br />
+    <div align="center">
+        <input style="width: 100%;" type="submit" value="Gönder" class="btn btn-dark btn-lg" />
+
+    </div>
+
+</form>
+}
+else
+{
+<hr />
+    <div align="center">
+        <p>Lütfen yorum yapmak için <a style="color:red;" href="~/Log/Giris">giriş</a> yapınız</p>
+    </div>
+}
+
+
+

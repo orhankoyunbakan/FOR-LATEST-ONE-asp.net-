@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ForLatestOneModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'ForLatestOne.dbo.kitapbilgi' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="kitapbilgi">
+          <Property Name="ad" Type="nvarchar" MaxLength="100" />
+          <Property Name="yazar" Type="nvarchar" MaxLength="100" />
+          <Property Name="kitap_url" Type="text" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'ForLatestOne.dbo.viewkitapbilgi' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="viewkitapbilgi">
+          <Property Name="ad" Type="nvarchar" MaxLength="100" />
+          <Property Name="yazar" Type="nvarchar" MaxLength="100" />
+          <Property Name="kitap_url" Type="text" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'ForLatestOne.dbo.viewmuzikbilgi' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="viewmuzikbilgi">
+          <Property Name="ad" Type="nvarchar" MaxLength="200" />
+          <Property Name="sanatcı" Type="nvarchar" MaxLength="500" />
+          <Property Name="muzik_url" Type="text" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'ForLatestOne.dbo.vmuzikbilgi' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="vmuzikbilgi">
+          <Property Name="ad" Type="nvarchar" MaxLength="200" />
+          <Property Name="sanatcı" Type="nvarchar" MaxLength="500" />
+          <Property Name="muzik_url" Type="text" />
+        </EntityType>-->
+  <EntityContainer Name="ForLatestOneModel1StoreContainer" />
+</Schema>

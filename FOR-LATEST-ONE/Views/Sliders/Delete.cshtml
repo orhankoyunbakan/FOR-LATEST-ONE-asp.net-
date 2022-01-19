@@ -1,0 +1,52 @@
+﻿@model FOR_LATEST_ONE.Models.slider
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container">
+
+    <h2>Oyun Sil</h2>
+    <hr />
+    <h3>Silmek istediğinize emin misiniz?</h3>
+    <hr />
+    <div class="card" style="width: 100%;">
+        <div class="row">
+            <div class="col-md-4"><img width="350" height="400" src=" @Html.DisplayFor(model => model.slider_url)" class="card-img-top" alt="..."></div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-4">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">@Html.DisplayNameFor(model => model.slider_url)</li>
+                            <li class="list-group-item">@Html.DisplayNameFor(model => model.slider_sira)</li>
+
+
+
+                        </ul>
+                    </div>
+                    <div class="col-md-8">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">@Html.DisplayFor(model => model.slider_url)</li>
+                            <li class="list-group-item">@Html.DisplayFor(model => model.slider_sira)</li>
+
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-success" /> <a href="index" class="btn btn-warning">Geri Git</a>
+        </div>
+    }
+</div>

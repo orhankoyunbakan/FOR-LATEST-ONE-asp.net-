@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model FOR_LATEST_ONE.Models.uye
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <br><br><br><br><br><br><br><br>
+    <div style="background-color: #e74c3c;padding: 30px;" class="container-fluid">
+        
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-md-4"> </div>
+
+
+
+                <div class="col-md-4">
+                    <form>
+
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label text-light">Email address  </label>
+                            <hr class="text-light">
+                            @Html.EditorFor(model => model.uye_mail, new { htmlAttributes = new { @class = "form-control", @type = "email", @Required = "" } })
+
+                            <hr class="text-light">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label text-light">Password</label>
+                            <hr class="text-light">
+                            @Html.EditorFor(model => model.uye_password, new { htmlAttributes = new { @class = "form-control ", @type = "password", @Required = "" } })
+
+                            <hr class="text-light">
+
+                        </div>
+
+                        <div align="center">
+                            <!-- <button style="width: 100%" type="submit" class="btn btn-dark btn-lg">Giriş Yap</button> -->
+                            <input style="width: 100%" type="submit" value="Giris Yap" class="btn btn-dark btn-lg" />
+                            <small style="color:white;"> @ViewBag.Hata</small>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <div class="col-md-4"></div>
+
+            </div>
+
+
+        </div>
+    </div>
+}
+
+<br><br><br><br><br><br><br><br>
+
